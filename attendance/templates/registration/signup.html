@@ -1,0 +1,17 @@
+
+{% if error %}
+<p style="padding: 5px;background-color: red;color: white">{{ error }}</p>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <script type="text/javascript">
+    	window.location = "{% url 'attendance:studentindex' %}";
+    </script>
+{% else %}
+	<form method="post" action="{% url 'attendance:sign_up' %}" class="sign_up">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit"  value="Sign Up">
+        <p><a href="{% url 'login' %}">Login?</a></p>
+    </form>
+{% endif %}

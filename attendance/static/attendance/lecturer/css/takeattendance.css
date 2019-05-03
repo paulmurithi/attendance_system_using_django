@@ -1,0 +1,20 @@
+.session_header{
+    color: inherit;
+    text-align: center;
+    font-size: 1.5em;
+    margin:0 auto;
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+.message{
+    margin-top: 10px;
+    width: 95%;
+    /*margin: 0 auto;*/
+}
+h3{
+    text-align: center;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 5px;
+}

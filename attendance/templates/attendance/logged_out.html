@@ -1,0 +1,15 @@
+
+{% if user.is_authenticated %}
+    <script type="text/javascript">
+    	window.location = "{% url 'index' %}";
+    </script>
+{% else %}
+
+ <script type="text/javascript">
+    	window.location = "{% url 'login' %}";
+  </script>
+  
+  <p>You have logged out</p>
+  <p><a href="{% url 'login' %}">Login?</a></p>
+
+{% endif %}

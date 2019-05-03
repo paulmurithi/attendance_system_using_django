@@ -1,0 +1,85 @@
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block title%}Assign units{% endblock%}
+{% block header %}
+  
+    <script type="text/javascript" src="{% static 'attendance/js/department/filter.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    {% if error_message%}
+        <div class="alert alert-danger">
+            <a href="#" data-dismiss="alert" aria-label="close" class="close">&times;</a>
+            {{error_message}}
+        </div>
+    {% endif%}
+    {% if message %}
+        <div class="alert alert-success">
+            <a href="#" data-dismiss="alert" aria-label="close" class="close">&times;</a>
+            {{message}}
+        </div>
+    {% endif%}
+
+    <div class="table-responsive-vertical">
+        <table class="table table-condensed table-bordered table-striped table-hover">
+             <thead>
+             <tr>
+                 <th><b>UNIT CODE</b></th>
+                 <th><b>Unit</b></th>
+                 <th><b>COURSE</b></th>
+             </tr>
+             </thead>
+             <tbody>
+                 {% for unit in units %}
+                     <tr>
+                         <td data-title="job-title">{{unit.unit_code}}</td>
+                         <td data-title="Unit Name">{{unit.staff_no.full_name}}</td>
+                         <td data-title="Course">{{unit.course_code.course_name}}</td>
+   
+                     </tr>
+                 {% endfor%}
+             </tbody>
+             <tfoot>
+             </tfoot>
+        </table>
+   </div>
+   <div class="pagination">
+           <span class="step-links">
+               {% if units.has_previous %}
+                   <a href="?page=1">&laquo; first</a>
+                   <a href="?page={{ units.previous_page_number }}">previous</a>
+               {% endif %}
+       
+               <span class="current">
+                   Page {{ units.number }} of {{ units.paginator.num_pages }}.
+               </span>
+       
+               {% if units.has_next %}
+                   <a href="?page={{ units.next_page_number }}">next</a>
+                   <a href="?page={{ units.paginator.num_pages }}">last &raquo;</a>
+               {% endif %}
+           </span>
+       </div>
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data" style="margin:5px;">
+        {% csrf_token %}
+        {{form.non_field_errors}}
+        {% for field in form %}
+        <div class="fieldwrapper form-group">
+            <label class="control-label col-lg-5 col-md-4 col-sm-2">{{field.label_tag}}</label>
+            {{field}}
+            {{field.errors}}
+            {% if field.help_text %}
+              <p class="help">{{field.help_text}}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="col-sm-offset-5 col-sm-7">
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-plus-circle"></i>
+                Assign Unit
+            </button>
+        </div> 
+        
+    </form>
+{% endblock %}

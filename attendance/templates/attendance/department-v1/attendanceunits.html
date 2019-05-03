@@ -1,0 +1,17 @@
+
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block header %}
+    <script type="text/javascript" src="{% static 'attendance/js/department/filter.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    <div>
+        {% for units in all_units %}
+            <a href="{% url 'attendance:department_get_reports'  units.unit_code %}">{{ units.unit_name }} [{{ units.unit_code }}]</a>
+            <br>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block jquery%}
+{% endblock%}

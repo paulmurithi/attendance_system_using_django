@@ -1,0 +1,39 @@
+{% extends 'attendance/department/basepdf.html' %}
+{% load static %}
+{% block content %}
+    <div class='details'>
+        <span style="font-weight: bold;font-size: 1.2em">Admission No: </span><span>{{ adm_no }}</span><br/>
+        <span style="font-weight: bold;font-size: 1.2em">Name: </span><span>{{ name }} </span><br/>
+       <!--  <span style="font-weight: bold;font-size: 1.2em">Academic Year:</span><span> {{ year }} </span><br/>
+        <span style="font-weight: bold;font-size: 1.2em">Semester:</span><span> {{ semester }}</span><br/> -->
+        <span style="font-weight: bold;font-size: 1.2em">Course: </span><span>{{ course }} </span><br/>
+
+        <span>Date: {{ today }}</span>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="thead" style="width: 20%">UNIT CODE</th>
+                    <th class="thead"> UNIT NAME</th>
+                    <th class="thead" style="width: 25%">PERCENTAGE</th>
+                </tr>
+            </thead>
+            <tbody>
+            	{% for key,attendance in attendance.items %}
+		            <tr>
+		                <!-- <td data-title="No.">{{forloop.counter}}</td> -->
+		                <td data-title="Unit Code" class="tdata">{{attendance.unit_code}}</td>
+		                <td data-title="Unit name" class="tdata">{{attendance.unit_name}}</td>
+		                <td data-title="Attendance percentage" class="tdata"		>{{attendance.attendance_percent|floatformat}}%</td>
+		            </tr>
+		         {% endfor %}
+                <!-- <tr>
+                    <td class="tdata">COM 323</td>
+                    <td class="tdata"> INTRODUCTION TO ALGORITHMS</td>
+                    <td class="tdata">90%</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

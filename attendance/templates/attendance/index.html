@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Attendance system</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <script src="{% static  'attendance/bootstrap-3.3.6/js/bootstrap.min.js'%}"></script>
+    <script src="{% static  'attendance/jquery-3.2.1.min.js'%}"></script>
+    <link rel="stylesheet" href="{% static  'attendance/bootstrap-3.3.6/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static  'attendance/Font-Awesome-master/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" href="{% static  'attendance/style.css'%}">
+</head>
+<body>
+<div class="row ">
+        <div class="col-sm-4 col-sm-offset-4 login-box">
+            <img src="{% static 'attendance/images/avatar.png'%}" class="avatar">
+               <h1>LOGIN</h1>
+            <form class="form-horizontal" action="{% url 'login' %}" method="post" enctype="multipart/form-data" role="form">
+                {% csrf_token%}
+                {{form.as_p}}
+                <input type="submit" value="Login" class="btn btn-default">
+                <a href="#">Forgot password</a><p><a href="{% url 'attendance:sign_up' %}">Create account?</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+{% extends 'attendance/lecturer/base.html' %}
+{% load static %}
+{% block header %}
+    <script type="text/javascript" src="{% static 'attendance/js/department/filter.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+ <ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Above 75%</a></li>
+  <li><a data-toggle="tab" href="#menu1">Below 75%</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+        <div class="table-responsive-vertical">
+         <table class="table table-condensed table-bordered table-striped table-hover">
+              <!--<caption>ABOVE 75%</caption>-->
+              <thead>
+              <tr>
+                  <th>No.</th>
+                  <th>Adm No.</th>
+                  <th>Student name</th>
+                  <th>Lectures attended</th>
+                  <th>Attendance percentage</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for key,attendance_list_above_75 in attendance_list_above_75.items %}
+                  <tr>
+                      <td data-title="No.">{{forloop.counter}}</td>
+                      <td data-title="Adm No.">{{attendance_list_above_75.adm_no}}</td>
+                      <td data-title="Student name">{{attendance_list_above_75.student_name}}</td>
+                      <td data-title="Lectures attended">{{attendance_list_above_75.lectures_attended}}</td>
+                      <td data-title="Attendance percentage">{{attendance_list_above_75.attendance_percent|floatformat}}%</td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+              <tfoot>
+              </tfoot>
+         </table>
+    </div>
+  </div>
+  <div id="menu1" class="tab-pane fade">
+        <div class="table-responsive-vertical">
+         <table class="table table-condensed table-bordered table-striped table-hover">
+              <!--<caption>BELOW 75%</caption>-->
+              <thead>
+              <tr>
+                  <th>No.</th>
+                  <th>Adm No.</th>
+                  <th>Student name</th>
+                  <th>Lectures attended</th>
+                  <th>Attendance percentage</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for key,attendance_list_less_than_75 in attendance_list_less_than_75.items %}
+                  <tr>
+                      <td data-title="No.">{{forloop.counter}}.</td>
+                      <td data-title="Adm No.">{{attendance_list_less_than_75.adm_no}}</td>
+                      <td data-title="Student name">{{attendance_list_less_than_75.student_name}}</td>
+                      <td data-title="Lectures attended">{{attendance_list_less_than_75.lectures_attended}}</td>
+                      <td data-title="Attendance percentage">{{attendance_list_less_than_75.attendance_percent|floatformat}}%</td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+              <tfoot>
+              </tfoot>
+         </table>
+    </div>
+  </div>
+</div>
+  <a href="{% url 'attendance:lecturerpdf' unit_code %}" style="float: right; padding-top: 20px; margin-right: 30px;">
+      <button class="btn btn-primary">
+          <span class="glyphicon glyphicon-print"></span>  Print
+      </button>
+  </a>
+{% endblock %}
+{% block jquery%}
+
+{% endblock%}

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<header>Filter reports</header>
+
+<div>
+	{% for course in all_course %}
+	<a href="{% url 'attendance:get_units'  course.course_code %}">{{ course.course_name }} [{{ course.course_code }}]</a>
+	<br>
+	{% endfor %}
+</div>
+
+<div class="display">
+	
+
+
+<script src="{% static 'jquery.js' %}"></script>
+</div>
+</body>
+</html>

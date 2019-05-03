@@ -1,0 +1,52 @@
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+</style>
+<header><span style="font-weight: bold;">Unit</span> {{ unit_code }}</header>
+<header><span style="font-weight: bold;">Total lectures</span> {{ lecturer_sessions }}</header>
+<hr>
+ <table style="width:70%">
+     <tr>
+      <th>Adm No.</th>
+      <th>Student name</th>
+      <th>Lectures attended</th>
+      <th>Attendance percentage</th>
+    </tr>
+    <header style="padding: 15px;font-weight: bold;">Above 75%</header>
+ {% for key,attendance_list_above_75 in attendance_list_above_75.items %}
+    <tr>
+      <td>{{attendance_list_above_75.adm_no}}</td>
+      <td>{{attendance_list_above_75.student_name}}</td>
+      <td>{{attendance_list_above_75.lectures_attended}}</td>
+      <td>{{attendance_list_above_75.attendance_percent|floatformat}}%</td>
+    </tr>
+  {% endfor %}
+</table> 
+
+
+ <table style="width:70%">
+     <tr>
+      <th>Adm No.</th>
+      <th>Student name</th>
+      <th>Lectures attended</th>
+      <th>Attendance percentage</th>
+    </tr>
+  <header style="padding: 15px;font-weight: bold;">Below 75%</header>
+  {% for key,attendance_list_less_than_75 in attendance_list_less_than_75.items %}
+    <tr>
+      <td>{{attendance_list_less_than_75.adm_no}}</td>
+      <td>{{attendance_list_less_than_75.student_name}}</td>
+      <td>{{attendance_list_less_than_75.lectures_attended}}</td>
+      <td>{{attendance_list_less_than_75.attendance_percent|floatformat}}</td>
+    </tr>
+  {% endfor %}
+</table>

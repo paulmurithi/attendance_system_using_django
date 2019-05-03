@@ -1,0 +1,45 @@
+{% extends 'attendance/lecturer/base.html' %}
+{% load static %}
+{% block header %}
+    <script type="text/javascript" src="{% static 'attendance/js/department/filter.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/lecturer/css/assignedunits.css'%}">
+{% endblock%}
+{% block content %}
+<h3 style="text-align: center;">STUDENTS PRESENT.</h3>
+ <div class="table-responsive-vertical">
+{% if students %}
+    <table class="table table-condensed table-bordered table-striped table-hover">
+    <thead>
+    <tr>
+      <th>No.</th>
+      <th>Admission Number</th>
+      <th>NAME</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key,student in students.items %}
+        <tr>
+          <td data-title="No">{{ forloop.counter }}.</td>
+          <td data-title="Admission No.">{{ student.adm_no }}</td>
+          <td data-title="NAME.">{{ student.name }}</td>
+          <td data-title="Date">{{ student.date }}</td>
+        </tr>
+    {% endfor %}
+{% else%}
+    <div class="alert alert-warning">
+        <a href="#" data-dismiss="alert" class="close" aria-label="close">&times;</a>
+        <p>{{message}}</p>
+    </div>
+{% endif%}
+</tbody>
+<tfoot>
+
+</tfoot>
+</table>
+</div>
+{% endblock %}
+{% block jquery%}
+
+{% endblock%}

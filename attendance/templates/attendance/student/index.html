@@ -1,0 +1,43 @@
+{% extends 'attendance/student/base.html' %}
+{% load static %}
+{% block title%} attendance report{% endblock%}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+<div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+          <caption>ATTENDANCE PER UNIT</caption>
+          <thead>
+          <tr>
+              <th>NO.</th>
+              <th>Unit Code</th>
+              <th>Unit name</th>
+              <th>Total Lectures</th>
+              <th>Lectures attended</th>
+              <th>Attendance percentage</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for key,attendance in attendance.items %}
+
+              <tr>
+                  <td data-title="No.">{{forloop.counter}}</td>
+                  <td data-title="Unit Code">{{attendance.unit_code}}</td>
+                  <td data-title="Unit name">{{attendance.unit_name}}</td>
+                  <td data-title="Total Lectures">{{attendance.Total_sessions}}</td>
+                  <td data-title="Lectures attended">{{attendance.attended_sessions}}</td>
+                  <td data-title="Attendance percentage">{{attendance.attendance_percent|floatformat}}%</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+          <tfoot>
+          </tfoot>
+     </table>
+</div>
+<a href="{% url 'attendance:student_pdf'%}" style="float: right; padding-top: 20px; margin-right: 30px;">
+      <button class="btn btn-primary">
+          <span class="glyphicon glyphicon-print"></span>  Print
+      </button>
+  </a>
+{% endblock %}

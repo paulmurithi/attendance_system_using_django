@@ -1,0 +1,34 @@
+{% extends 'attendance/student/base.html' %}
+{% load static %}
+{% block title%} register units{% endblock%}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    <!--<form action="" method="post" enctype="multipart/form-data">-->
+        <div class="table-responsive-vertical">
+             <table class="table table-condensed table-bordered table-striped table-hover">
+                  <caption>REGISTER UNITS.</caption>
+                  <thead>
+                  <tr>
+                      <th>SELECT</th>
+                      <th>Unit Code</th>
+                      <th>Unit name</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for unit in units %}
+                      <tr>
+                          <td data-title="SELECT"><input type="checkbox" name="units" id="{{unit.unit_code}}"></td>
+                          <td data-title="Unit Code">{{unit.unit_code}}</td>
+                          <td data-title="Unit name">{{unit.unit_name}}</td>
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+                  <tfoot>
+                  </tfoot>
+             </table>
+        </div>
+        <input type="submit" value="Register" name="register_units" class="btn btn-default">
+    <!--</form>-->
+{% endblock %}

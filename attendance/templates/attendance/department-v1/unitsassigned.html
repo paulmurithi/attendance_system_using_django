@@ -1,0 +1,55 @@
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block title%}Assigned units{% endblock%}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    <button class="btn btn-success pull-right" style="margin:5px;">
+        <i class="fa fa-plus-circle"></i>
+        <a href="{% url  'attendance:addunitassign' %}" class="btn_link">
+                <b>Units not assigned</b>
+        </a>
+        
+    </button>
+    <div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+          <thead>
+          <tr>
+              <th><b>UNIT CODE</b></th>
+              <th><b>Lecturer Name</b></th>
+              <th><b>COURSE</b></th>
+          </tr>
+          </thead>
+          <tbody>
+              {% for unit in units %}
+                  <tr>
+                      <td data-title="job-title">{{unit.unit_code}}</td>
+                      <td data-title="order-id">{{unit.staff_no.full_name}}</td>
+                      <td data-title="order-id">{{unit.course_code.course_name}}</td>
+
+                  </tr>
+              {% endfor%}
+          </tbody>
+          <tfoot>
+          </tfoot>
+     </table>
+</div>
+<div class="pagination">
+        <span class="step-links">
+            {% if units.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ units.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ units.number }} of {{ units.paginator.num_pages }}.
+            </span>
+    
+            {% if units.has_next %}
+                <a href="?page={{ units.next_page_number }}">next</a>
+                <a href="?page={{ units.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}

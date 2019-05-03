@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title%}{% endblock%}</title>
+    <script type="text/javascript" src="{% static 'attendance/js/jquery-3.2.1.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/bootstrap-3.3.6/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/Font-Awesome-master/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/writer.css'%}">
+    <script type="text/javascript" src="{% static 'attendance/bootstrap-3.3.6/js/bootstrap.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'attendance/js/Chart.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'attendance/js/department/script.js'%}"></script>
+    {% block header %}{% endblock %}
+</head>
+<body>
+<div class="fixed" >
+    <nav class="topbar">
+        <a href="javascript:void(0)" id="navicon" onclick="open_dash()"><i class="fa fa-navicon"></i></a>
+        <a href="admin" id="logo">Attendance Management System</a>
+        <a href=""></a>
+        <span class="float-right">
+            <a href="admin-area">
+              <button class="btn btn-danger admin-area">
+                  <i class="fa fa-gear"></i>
+                  <strong>Department area</strong>
+              </button>
+            </a>
+            <span>
+                <a href="{% url 'attendance:customlogout'%}">
+                    <strong>Logout</strong>
+                </a>
+            </span>
+        </span>
+    </nav>
+    <div style="display:block;background:  #006622;height: 5px">&nbsp;</div>
+    <!--left navigation bar-->
+    <div class="row">
+    <div class="dashboard col-lg-3 col-md-3" id="dashboard">
+        <span id="close" onclick="close_dash()">&times;</span><br>
+        <div class="avatar">
+            <img src="{% static 'attendance/images/avatar.png'%}" class=" img-circle img-responsive" alt="avatar">
+            <div class="text">
+                     <span><a href="edit-profile.php" >{{request.user}}</a><br>
+                         <span id="on-indicator"></span>
+                         <span class="online">online</span>
+                     </span>
+            </div>
+        </div>
+        <h4 style="margin-top: 40px;text-align: center;"><i class="fa fa-dashboard"></i> Dashboard</h4>
+        <ul>
+            <li>
+                <a href="{% url 'attendance:departmentindex' %}" >
+                    <i class="fa fa-home dashboard-icons"></i>
+                    &nbsp;&nbsp;&nbsp;Home
+                </a>
+            </li>
+            <li class="accordion1">
+                    <a href="#">
+                        <i class="fa fa-university dashboard-icons"></i>
+                    &nbsp;&nbsp;&nbsp;Courses
+                        <i class="fa fa-caret-down pull-right"></i>
+                    </a>
+            </li>
+            <ul class="accordion-content1">
+                <li><a href="{% url 'attendance:courses' %}">View Courses</a></li>
+                <li>
+                    <a href="{% url 'attendance:addcourse' %}">
+                        Add Course
+                    </a>
+                </li>
+            </ul>
+            <li class="accordion">
+                <a href="#">
+                    <i class="fa fa-users dashboard-icons"></i>
+                    &nbsp;&nbsp;&nbsp;Lecturers
+                    <i class="fa fa-caret-down pull-right"></i>
+                </a>
+            </li>
+            <ul class="accordion-content">
+                <li><a href="{% url 'attendance:lecturers' %}">View Lecturers</a></li>
+                <li>
+                    <a href="{% url 'attendance:addlecturer' %}">
+                        Register Lecturer
+                    </a>
+                </li>
+            </ul>
+            <li class="accordion2">
+                <a href="#" >
+                    <i class="fa fa-book dashboard-icons"></i>
+                    &nbsp;&nbsp;&nbsp;Units
+                    <i class="fa fa-caret-down pull-right"></i>
+                </a>
+            </li>
+            <ul class="accordion-content2">
+                <li>
+                        <a href="{% url 'attendance:units' %}" >
+                            <i class="fa fa-eye dashboard-icons"></i>
+                            View Units
+                        </a>
+                </li>
+                <li>
+                        <a href="{% url 'attendance:addunit' %}">
+                            <i class="fa fa-plus-circle dashboard-icons"></i>
+                            New Units
+                        </a>
+                    </li>
+                <li><a href="{% url 'attendance:unitsassigned' %}">View Units Assigned</a></li>
+                <li>
+                    <a href="{% url 'attendance:addunitassign'%}">&nbsp;Assign Unit
+                    </a>
+                </li>
+            </ul>
+            <!--<li>-->
+                <!--<a href="school-calendar">-->
+                    <!--<i class="fa fa-calendar dashboard-icons"></i>-->
+                    <!--&nbsp;&nbsp;Reports-->
+                <!--</a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    </div>
+</div>
+<div class="dash-content">
+    {% block content %}
+    {% endblock %}
+</div>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.accordion').click(function () {
+        $('.accordion-content').slideToggle(500);
+    });
+    $('.accordion1').click(function () {
+        $('.accordion-content1').slideToggle(500);
+    });
+    $('.accordion2').click(function () {
+        $('.accordion-content2').slideToggle(500);
+    });
+});
+</script>
+{% block jquery %}
+{% endblock %}
+</body>
+</html>

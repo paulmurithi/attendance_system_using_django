@@ -1,0 +1,43 @@
+
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block header %}
+    <script type="text/javascript" src="{% static 'attendance/js/department/filter.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'attendance:departmentindex' %}">Home</a> </li>
+        <li>Unit attendance</li>
+    </ul>
+    <div>
+        <table class="table table-condensed table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Unit code</th>
+                    <th>Unit Name</th>
+                    <th>Total lectures</th>
+                </tr>
+            </thead>
+        {% for key,unit in all_units.items %}
+            <tr>
+                <td>{{ forloop.counter}}</td>
+                <td>{{ unit.unit_code}}</td>
+                <td>{{ unit.unit_name}}</td>
+                <td>
+                    {% if unit.count%}
+                    <a href="{% url 'attendance:department_get_reports'  unit.unit_code %}">
+                         {{unit.count}}
+                     </a>
+                    {% else %}
+                    No lecturers attended
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+{% block jquery%}
+{% endblock%}

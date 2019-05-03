@@ -1,0 +1,34 @@
+{% extends 'attendance/lecturer/base.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/lecturer/css/assignedunits.css'%}">
+{% endblock%}
+{% block content %}
+    <h4>YOUR ASSIGNED UNITS</h4>
+    <!--{% for unit in lecturer_units %}-->
+    <!--<p style="background-color: #C0C0C0;display: inline;padding: 10px;margin: 5px">{{ unit.unit_code.unit_code }}-->
+    <!--<a href="{% url 'attendance:attendanceanalysis' unit.unit_code.unit_code%}">View Attendance</a>-->
+    <!--</p>-->
+    <!--{% endfor %}-->
+<div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>UNIT CODE</th>
+                <th>UNIT NAME</th>
+                <th>ACTION</th>
+            </tr>
+        </thead>
+        {% for unit in lecturer_units %}
+        <tr>
+            <td data-title="UNIT CODE">{{ unit.unit_code.unit_code }}</td>
+            <td data-title="UNIT CODE">{{ unit.unit_code.unit_name }}</td>
+            <td data-title="ACTION"><a href="{% url 'attendance:attendanceanalysis' unit.unit_code.unit_code%}" class="btn btn-default">View attendance</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
+{% block jquery%}
+{% endblock%}

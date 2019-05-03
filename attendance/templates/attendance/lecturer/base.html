@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title%}{% endblock%}</title>
+    <script type="text/javascript" src="{% static 'attendance/js/jquery-3.2.1.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/bootstrap-3.3.6/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/Font-Awesome-master/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/writer.css'%}">
+    <script type="text/javascript" src="{% static 'attendance/bootstrap-3.3.6/js/bootstrap.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'attendance/js/Chart.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'attendance/js/department/script.js'%}"></script>
+    {% block header %}{% endblock %}
+</head>
+<body>
+<div class="fixed" >
+    <nav class="topbar">
+        <a href="javascript:void(0)" id="navicon" onclick="open_dash()"><i class="fa fa-navicon"></i></a>
+        <a href="admin" id="logo">Attendance Management System</a>
+        <a href=""></a>
+        <span class="float-right">
+            <span>
+                <a href="{% url 'attendance:customlogout'%}">
+                    <strong>Logout</strong>
+                </a>
+            </span>
+        </span>
+    </nav>
+    <div style="display:block;background:  #006622;height: 5px">&nbsp;</div>
+    <!--left navigation bar-->
+    <div class="row">
+    <div class="dashboard col-lg-3 col-md-3" id="dashboard">
+        <span id="close" onclick="close_dash()">&times;</span><br>
+        <div class="avatar">
+            <img src="{% static 'attendance/images/avatar.png'%}" class=" img-circle img-responsive" alt="avatar">
+            <div class="text">
+                     <span><a href="#" >{{ request.user}}</a><br><br>
+                         <span id="on-indicator"></span>
+                         <span class="online">online</span>
+                     </span>
+            </div>
+        </div>
+        <h4 style="margin-top: 40px;text-align: center;"><i class="fa fa-dashboard"></i> Dashboard</h4>
+        <ul>
+            <li>
+                <a href="{% url 'attendance:lecturerindex' %}" >
+                    <i class="fa fa-home dashboard-icons"></i>
+                    &nbsp;&nbsp;&nbsp;Home
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'attendance:reportunits' %}" >
+                    <i class="fa fa-users dashboard-icons"></i>
+                    &nbsp;&nbsp;&nbsp;Attendance
+                </a>
+            </li>
+            <!--<li>-->
+                <!--<a href="school-calendar">-->
+                    <!--<i class="fa fa-calendar dashboard-icons"></i>-->
+                    <!--&nbsp;&nbsp;Reports-->
+                <!--</a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+    </div>
+</div>
+<div class="dash-content">
+    {% block content %}
+    {% endblock %}
+</div>
+{% block jquery %}
+{% endblock %}
+</body>
+</html>

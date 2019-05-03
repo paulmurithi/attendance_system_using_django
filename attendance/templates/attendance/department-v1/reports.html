@@ -1,0 +1,293 @@
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block title%} Reports{% endblock%}
+{% block header %}
+    <script type="text/javascript" src="{% static 'attendance/js/department/filter.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    <!--<a href="{% url 'attendance:generatepdf' %}">Generate PDF</a>-->
+    <header><span style="font-weight: bold;">Unit</span> {{ unit_code }}</header>
+    <header><span style="font-weight: bold;">Total lectures</span> {{ lecturer_sessions }}</header>
+    <!--<div class="row">-->
+        <!--<div class="col-xs-12 col-sm-12 col-md-6">-->
+            <!--<div class="panel panel-info job-description">-->
+              <!--<div class="panel-heading ">-->
+              <!--</div>-->
+              <!--<div class="panel-body">-->
+                  <!--<canvas id="pie_chart" height="250" width="400" >-->
+
+                  <!--</canvas>-->
+              <!--</div>-->
+              <!--<div class="panel-footer">-->
+
+              <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-12 col-sm-12 col-md-6">-->
+            <!--<div class="panel panel-info job-description">-->
+              <!--<div class="panel-heading ">-->
+              <!--</div>-->
+              <!--<div class="panel-body">-->
+                  <!--<canvas id="line_chart" height="250" width="400" >-->
+
+                  <!--</canvas>-->
+              <!--</div>-->
+              <!--<div class="panel-footer">-->
+
+              <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--<div class="row">-->
+        <!--<div class="col-xs-12 col-sm-12 col-md-6">-->
+            <!--<div class="panel panel-info job-description">-->
+              <!--<div class="panel-heading ">-->
+              <!--</div>-->
+              <!--<div class="panel-body">-->
+                  <!--<canvas id="doughnut" height="250" width="400" >-->
+
+                  <!--</canvas>-->
+              <!--</div>-->
+              <!--<div class="panel-footer">-->
+
+              <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-12 col-sm-12 col-md-6">-->
+            <!--<div class="panel panel-info job-description">-->
+              <!--<div class="panel-heading ">-->
+              <!--</div>-->
+              <!--<div class="panel-body">-->
+                  <!--<canvas id="bar_chart" height="250" width="400" >-->
+
+                  <!--</canvas>-->
+              <!--</div>-->
+              <!--<div class="panel-footer">-->
+
+              <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+          <caption>ABOVE 75%</caption>
+          <thead>
+          <tr>
+              <th>Adm No.</th>
+              <th>Student name</th>
+              <th>Lectures attended</th>
+              <th>Attendance percentage</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for key,attendance_list_above_75 in attendance_list_above_75.items %}
+              <tr>
+                  <td data-title="Adm No.">{{attendance_list_above_75.adm_no}}</td>
+                  <td data-title="Student name">{{attendance_list_above_75.student_name}}</td>
+                  <td data-title="Lectures attended">{{attendance_list_above_75.lectures_attended}}</td>
+                  <td data-title="Attendance percentage">{{attendance_list_above_75.attendance_percent|floatformat}}%</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+          <tfoot>
+          </tfoot>
+     </table>
+</div>
+<div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+          <caption>BELOW 75%</caption>
+          <thead>
+          <tr>
+              <th>Adm No.</th>
+              <th>Student name</th>
+              <th>Lectures attended</th>
+              <th>Attendance percentage</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for key,attendance_list_less_than_75 in attendance_list_less_than_75.items %}
+              <tr>
+                  <td data-title="Adm No.">{{attendance_list_less_than_75.adm_no}}</td>
+                  <td data-title="Student name">{{attendance_list_less_than_75.student_name}}</td>
+                  <td data-title="Lectures attended">{{attendance_list_less_than_75.lectures_attended}}</td>
+                  <td data-title="Attendance percentage">{{attendance_list_less_than_75.attendance_percent|floatformat}}%</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+          <tfoot>
+          </tfoot>
+     </table>
+</div>
+{% endblock %}
+{% block jquery%}
+<!--<script type="text/javascript">-->
+        <!--$(document).ready(function () {-->
+            <!--var ctx = document.getElementById("pie_chart").getContext('2d');-->
+            <!--var myChart = new Chart(ctx, {-->
+                <!--type: 'pie',-->
+                <!--data: {-->
+                    <!--labels: ["Red", "Blue"],-->
+                    <!--datasets: [{-->
+                        <!--label: '# of Votes',-->
+                        <!--data: [12, 9],-->
+                        <!--backgroundColor: [-->
+                            <!--'rgba(255, 99, 132, 0.2)',-->
+                            <!--'rgba(54, 162, 235, 0.2)',-->
+                            <!--'rgba(255, 206, 86, 0.2)',-->
+                            <!--'rgba(75, 192, 192, 0.2)',-->
+                            <!--'rgba(153, 102, 255, 0.2)',-->
+                            <!--'rgba(255, 159, 64, 0.2)'-->
+                        <!--],-->
+                        <!--borderColor: [-->
+                            <!--'rgba(255,99,132,1)',-->
+                            <!--'rgba(54, 162, 235, 1)',-->
+                            <!--'rgba(255, 206, 86, 1)',-->
+                            <!--'rgba(75, 192, 192, 1)',-->
+                            <!--'rgba(153, 102, 255, 1)',-->
+                            <!--'rgba(255, 159, 64, 1)'-->
+                        <!--],-->
+                        <!--borderWidth: 1-->
+                    <!--}]-->
+                <!--},-->
+                <!--options: {-->
+                    <!--scales: {-->
+                        <!--yAxes: [{-->
+                            <!--ticks: {-->
+                                <!--beginAtZero:true-->
+                            <!--}-->
+                        <!--}]-->
+                    <!--}-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+       <!--);-->
+    <!--</script>-->
+<!--<script type="text/javascript">-->
+        <!--$(document).ready(function () {-->
+            <!--var ctx = document.getElementById("line_chart").getContext('2d');-->
+            <!--var myChart = new Chart(ctx, {-->
+                <!--type: 'line',-->
+                <!--data: {-->
+                    <!--labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],-->
+                    <!--datasets: [{-->
+                        <!--label: '# of Votes',-->
+                        <!--data: [12, 19, 3, 5, 2, 3],-->
+                        <!--backgroundColor: [-->
+                            <!--'rgba(255, 99, 132, 0.2)',-->
+                            <!--'rgba(54, 162, 235, 0.2)',-->
+                            <!--'rgba(255, 206, 86, 0.2)',-->
+                            <!--'rgba(75, 192, 192, 0.2)',-->
+                            <!--'rgba(153, 102, 255, 0.2)',-->
+                            <!--'rgba(255, 159, 64, 0.2)'-->
+                        <!--],-->
+                        <!--borderColor: [-->
+                            <!--'rgba(255,99,132,1)',-->
+                            <!--'rgba(54, 162, 235, 1)',-->
+                            <!--'rgba(255, 206, 86, 1)',-->
+                            <!--'rgba(75, 192, 192, 1)',-->
+                            <!--'rgba(153, 102, 255, 1)',-->
+                            <!--'rgba(255, 159, 64, 1)'-->
+                        <!--],-->
+                        <!--borderWidth: 1-->
+                    <!--}]-->
+                <!--},-->
+                <!--options: {-->
+                    <!--scales: {-->
+                        <!--yAxes: [{-->
+                            <!--ticks: {-->
+                                <!--beginAtZero:true-->
+                            <!--}-->
+                        <!--}]-->
+                    <!--}-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+       <!--);-->
+    <!--</script>-->
+<!--<script type="text/javascript">-->
+        <!--$(document).ready(function () {-->
+            <!--var ctx = document.getElementById("doughnut").getContext('2d');-->
+            <!--var myChart = new Chart(ctx, {-->
+                <!--type: 'doughnut',-->
+                <!--data: {-->
+                    <!--labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],-->
+                    <!--datasets: [{-->
+                        <!--label: '# of Votes',-->
+                        <!--data: [12, 19, 3, 5, 2, 3],-->
+                        <!--backgroundColor: [-->
+                            <!--'rgba(255, 99, 132, 0.2)',-->
+                            <!--'rgba(54, 162, 235, 0.2)',-->
+                            <!--'rgba(255, 206, 86, 0.2)',-->
+                            <!--'rgba(75, 192, 192, 0.2)',-->
+                            <!--'rgba(153, 102, 255, 0.2)',-->
+                            <!--'rgba(255, 159, 64, 0.2)'-->
+                        <!--],-->
+                        <!--borderColor: [-->
+                            <!--'rgba(255,99,132,1)',-->
+                            <!--'rgba(54, 162, 235, 1)',-->
+                            <!--'rgba(255, 206, 86, 1)',-->
+                            <!--'rgba(75, 192, 192, 1)',-->
+                            <!--'rgba(153, 102, 255, 1)',-->
+                            <!--'rgba(255, 159, 64, 1)'-->
+                        <!--],-->
+                        <!--borderWidth: 1-->
+                    <!--}]-->
+                <!--},-->
+                <!--options: {-->
+                    <!--scales: {-->
+                        <!--yAxes: [{-->
+                            <!--ticks: {-->
+                                <!--beginAtZero:true-->
+                            <!--}-->
+                        <!--}]-->
+                    <!--}-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+       <!--);-->
+    <!--</script>-->
+    <!--<script type="text/javascript">-->
+        <!--$(document).ready(function () {-->
+            <!--var ctx = document.getElementById("bar_chart").getContext('2d');-->
+            <!--var myChart = new Chart(ctx, {-->
+                <!--type: 'bar',-->
+                <!--data: {-->
+                    <!--labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],-->
+                    <!--datasets: [{-->
+                        <!--label: '# of Votes',-->
+                        <!--data: [12, 19, 3, 5, 2, 3],-->
+                        <!--backgroundColor: [-->
+                            <!--'rgba(255, 99, 132, 0.2)',-->
+                            <!--'rgba(54, 162, 235, 0.2)',-->
+                            <!--'rgba(255, 206, 86, 0.2)',-->
+                            <!--'rgba(75, 192, 192, 0.2)',-->
+                            <!--'rgba(153, 102, 255, 0.2)',-->
+                            <!--'rgba(255, 159, 64, 0.2)'-->
+                        <!--],-->
+                        <!--borderColor: [-->
+                            <!--'rgba(255,99,132,1)',-->
+                            <!--'rgba(54, 162, 235, 1)',-->
+                            <!--'rgba(255, 206, 86, 1)',-->
+                            <!--'rgba(75, 192, 192, 1)',-->
+                            <!--'rgba(153, 102, 255, 1)',-->
+                            <!--'rgba(255, 159, 64, 1)'-->
+                        <!--],-->
+                        <!--borderWidth: 1-->
+                    <!--}]-->
+                <!--},-->
+                <!--options: {-->
+                    <!--scales: {-->
+                        <!--yAxes: [{-->
+                            <!--ticks: {-->
+                                <!--beginAtZero:true-->
+                            <!--}-->
+                        <!--}]-->
+                    <!--}-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+       <!--);-->
+    <!--</script>-->
+
+{% endblock%}

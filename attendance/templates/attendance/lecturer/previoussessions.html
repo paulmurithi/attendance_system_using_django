@@ -1,0 +1,37 @@
+{% extends 'attendance/lecturer/base.html' %}
+{% load static %}
+{% block header %}
+    <script type="text/javascript" src="{% static 'attendance/js/department/filter.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/lecturer/css/assignedunits.css'%}">
+{% endblock%}
+{% block content %}
+<h3 style="text-align: center;">PREVIOUS LECTURES</h3>
+<div class="table-responsive-vertical">
+    <table class="table table-condensed table-bordered table-striped table-hover">
+      <!--<caption>BELOW 75%</caption>-->
+      <thead>
+         <tr>
+            <th>No.</th>
+            <th>Unit Code</th>
+            <th>Date</th>
+            <th>Go to session</th>
+        </tr>
+        {% for session in sessions %}
+            <tr>
+            <td>{{ forloop.counter }}.</td>
+            <td>{{ session.unit_code }}</td>
+            <td>{{ session.date }}</td>
+
+            <td><a href="{% url 'attendance:sessionattendance' session.session_id%}" class="btn btn-default">view</a></td>
+            </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+      </tfoot>
+    </table>
+</div>
+{% endblock %}
+{% block jquery%}
+
+{% endblock%}

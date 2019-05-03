@@ -1,0 +1,47 @@
+<!--<form method="post" action="{% url 'attendance:sign_up' %}" class="sign_up">-->
+    <!--{% csrf_token %}-->
+    <!--{{ form.as_p}}-->
+    <!--<input type="submit"  value="Sign Up">-->
+    <!--<p><a href="{% url 'attendance:index' %}">Login?</a></p>-->
+<!--</form>-->
+{% load static %}
+<!DOCTYPE Html>
+<html>
+<head>
+    <title>sign up</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <script type="text/javascript" src="{% static 'attendance/js/jquery-3.2.1.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/bootstrap-3.3.6/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/Font-Awesome-master/css/font-awesome.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/writer.css'%}">
+    <script type="text/javascript" src="{% static 'attendance/bootstrap-3.3.6/js/bootstrap.min.js'%}"></script>
+    <link rel="stylesheet" href="{% static  'attendance/style.css'%}">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="row">
+        {% if error %}
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ error }}
+        </div>
+        {% endif %}
+            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-4">
+                <h1 style="text-align: center;">SIGN UP</h1>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <form action="{% url 'attendance:sign_up' %}" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+                {% csrf_token%}
+                {{form.as_p}}
+                <input type="submit" value="Register" class="btn btn-default">
+                <p><a href="{% url 'attendance:index' %}">Login?</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

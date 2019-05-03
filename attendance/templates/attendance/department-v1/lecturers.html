@@ -1,0 +1,35 @@
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    {% if message %}
+        <div class="alert alert-success">
+            <a href="#" data-dismiss="alert" aria-label="close" class="close">&times;</a>
+            {{message}}
+        </div>
+    {% endif%}
+    <div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+          <caption>LECTURERS</caption>
+          <thead>
+          <tr>
+              <th>STAFF NUMBER</th>
+              <th>FULL NAME</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for lecturer in lecturers%}
+              <tr>
+                  <td data-title="job-title">{{lecturer.staff_no|upper}}</td>
+                  <td data-title="order-id">{{lecturer.full_name|upper}}</td>
+
+              </tr>
+          {% endfor%}
+          </tbody>
+          <tfoot>
+          </tfoot>
+     </table>
+</div>
+{% endblock %}

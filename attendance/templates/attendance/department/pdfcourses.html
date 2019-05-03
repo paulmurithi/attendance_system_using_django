@@ -1,0 +1,16 @@
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block header %}
+    <script type="text/javascript" src="{% static 'attendance/js/department/filter.js'%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    <div>
+        {% for course in all_course %}
+        <a href="{% url 'attendance:pdfunits'  course.course_code %}">{{ course.course_name }} [{{ course.course_code }}]</a>
+        <br>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block jquery%}
+{% endblock%}

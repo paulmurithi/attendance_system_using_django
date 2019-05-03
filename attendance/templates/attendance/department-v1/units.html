@@ -1,0 +1,31 @@
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    <div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+          <caption>COURSES</caption>
+          <thead>
+          <tr>
+              <th>UNIT CODE</th>
+              <th>UNIT NAME</th>
+              <th>COURSE</th>
+          </tr>
+          </thead>
+          <tbody>
+              {% for unit in units %}
+                  <tr>
+                      <td data-title="job-title">{{unit.unit_code}}</td>
+                      <td data-title="order-id">{{unit.unit_name}}</td>
+                      <td data-title="order-id">{{unit.course}}</td>
+
+                  </tr>
+              {% endfor%}
+          </tbody>
+          <tfoot>
+          </tfoot>
+     </table>
+</div>
+{% endblock %}

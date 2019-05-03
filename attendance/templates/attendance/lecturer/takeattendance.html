@@ -1,0 +1,111 @@
+{% extends 'attendance/lecturer/base.html' %}
+{% load static %}
+{% block header %}
+<link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'attendance/lecturer/css/takeattendance.css'%}">
+{% endblock %}
+{% block content %}
+<div class="session_header">
+    LECTURER:{{ session_details.staff_no.staff_no}}
+    <br>
+    UNIT CODE:{{ session_details.unit_code.unit_code}}
+    <!--<br>-->
+    <!--SESSION ID:{{ session_details.session_id}}-->
+    <br>
+    DATE:{{ session_details.date}}
+    <a style="float: right;" href="{% url 'attendance:endsession' %}" class="btn btn-danger"> End Session</a>
+</div>
+<div class="message">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <!--<p style="padding: 5px;background-color: green;color: white">{{ message }}</p>-->
+
+        {% if message.tags  == "success" %}
+            <div class="alert alert-success">
+            <a href="#" data-dismiss="alert" class="close" aria-label="close">&times;</a>
+            <p>{{message}}</p>
+
+            </div>
+        {% else %}
+        <div class="alert alert-warning">
+            <a href="#" data-dismiss="alert" class="close" aria-label="close">&times;</a>
+            <p>{{message}}</p>
+
+            </div>
+        {% endif %}
+
+
+
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if saved %}
+    <!--<p style="padding: 5px;background-color: green;color: white">{{ saved }}</p>-->
+        <div class="alert alert-success">
+            <a href="#" data-dismiss="alert" class="close" aria-label="close">&times;</a>
+            <p>{{saved}}</p>
+        </div>
+    {% endif %}
+</div>
+<form method="post" id="takeattendance" action="{% url 'attendance:takeattendance' session_details.session_id %}" method="post" enctype="multipart/form-data" class="col-lg-offset-4" style="margin-top: 5px">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit"  value="Sign In Student">
+</form>
+<hr />
+
+<h3>Signed in Students</h3>
+<div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+         <thead>
+            <tr>
+              <th>No.</th>
+              <th>Admission Number</th>
+              <th>Date</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for each_student in signed_in_students %}
+                <tr>
+                  <td data-title="No">{{ forloop.counter }}</td>
+                  <td data-title="Admission No.">{{ each_student.adm_no.adm_no }}</td>
+                  <td data-title="Date">{{ each_student.date }}</td>
+                </tr>
+            {% endfor %}
+         </tbody>
+         <tfoot>
+
+         </tfoot>
+    </table>
+</div>
+{% endblock %}
+<!--<script type="text/javascript">-->
+    <!--// $.ajax({-->
+    <!--//     type:'post,-->
+    <!--//     url:'{% url 'attendance:takeattendance' session_details.session_id %}',-->
+    <!--//     dataType:'json',-->
+    <!--//     data:{-->
+    <!--//         csrfmiddlewaretoken:{{csrf_token}},-->
+    <!--//         adm_no:$('#id_admission_number').val()-->
+    <!--//     },-->
+    <!--//     success:function(){-->
+    <!--//-->
+    <!--//     }-->
+    <!--// });-->
+    <!--$(document).on('submit','#takeattendance',function (e) {-->
+        <!--e.preventDefault();-->
+        <!--$.ajax({-->
+            <!--type:'POST',-->
+            <!--url:'lecturer/takeattendance/session_details.session_id/',-->
+            <!--data:{-->
+                <!--csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),-->
+                <!--adm_no:$('#id_admission_number').val()-->
+            <!--},-->
+            <!--success:function() {-->
+
+            <!--}-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->

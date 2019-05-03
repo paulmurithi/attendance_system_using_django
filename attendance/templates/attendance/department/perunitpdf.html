@@ -1,0 +1,40 @@
+{% extends 'attendance/department/basepdf.html' %}
+{% load static %}
+{% block content %}
+    <div class='details'>
+        <span style="font-weight: bold;font-size: 1.2em"> Unit code:</span><span> {{ unitcode }}</span><br/>
+        <span style="font-weight: bold;font-size: 1.2em">Unit Name:</span><span> {{ unitname }} </span><br/>
+        <!--<span style="font-weight: bold;font-size: 1.2em">Academic Year:</span><span> {{ year }} </span><br/>-->
+        <!--<span style="font-weight: bold;font-size: 1.2em">Semester:</span><span> {{ semester }}</span><br/>-->
+        <span style="font-weight: bold;font-size: 1.2em">Course:</span><span> {{ course }} </span><br/>
+        <span style="font-weight: bold;font-size: 1.2em">Lecturer:</span><span> {{ Lecturer}}</span><br/>
+        <span>Date:</span><span> {{ today }}</span>
+    </div>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th class="thead" style="width: 30%;">ADM NO</th>
+                    <th class="thead">NAME</th>
+                    <th class="thead" style="width: 25%">PERCENTAGE</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key,attendance_list_above_75 in attendance_list_above_75.items %}
+                    <tr>
+                        <td data-title="Adm No." class="tdata">{{attendance_list_above_75.adm_no}}</td>
+                        <td data-title="Student name" class="tdata">{{attendance_list_above_75.student_name}}</td>
+                        <td data-title="Attendance percentage" class="tdata">{{attendance_list_above_75.attendance_percent|floatformat}}%</td>
+                    </tr>
+                {% endfor %}
+                {% for key,attendance_list_less_than_75 in attendance_list_less_than_75.items %}
+                    <tr>
+                        <td data-title="Adm No." class="tdata">{{attendance_list_less_than_75.adm_no}}</td>
+                        <td data-title="Student name" class="tdata">{{attendance_list_less_than_75.student_name}}</td>
+                        <td data-title="Attendance percentage" class="tdata">{{attendance_list_less_than_75.attendance_percent|floatformat}}%</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

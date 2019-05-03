@@ -1,0 +1,6 @@
+<div>
+	{% for units in all_units %}
+	<a href="{% url 'attendance:get_reports'  units.unit_code %}">{{ units.unit_name }} [{{ units.unit_code }}]</a>
+	<br>
+	{% endfor %}
+</div>

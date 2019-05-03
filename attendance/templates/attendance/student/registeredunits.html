@@ -1,0 +1,31 @@
+{% extends 'attendance/student/base.html' %}
+{% load static %}
+{% block title%} attendance report{% endblock%}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+<div class="table-responsive-vertical">
+     <table class="table table-condensed table-bordered table-striped table-hover">
+          <caption>REGISTERED UNITS</caption>
+          <thead>
+          <tr>
+              <th>No.</th>
+              <th>Unit Code</th>
+              <th>Unit name</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for key,unit_details in unit_details.items %}
+              <tr>
+                  <td data-title="No.">{{forloop.counter}}</td>
+                  <td data-title="Unit Code">{{unit_details.unit_code}}</td>
+                  <td data-title="Unit name">{{unit_details.unit_name}}</td>
+              </tr>
+          {% endfor %}
+          </tbody>
+          <tfoot>
+          </tfoot>
+     </table>
+</div>
+{% endblock %}

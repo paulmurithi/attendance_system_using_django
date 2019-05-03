@@ -1,0 +1,39 @@
+{% extends 'attendance/department/base.html' %}
+{% load static %}
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'attendance/department/css/orders.css'%}">
+{% endblock%}
+{% block content %}
+    <div>
+        <table class="table table-condensed table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Course</th>
+                    <th>Course code</th>
+                    <th>units attended</th>
+                </tr>
+            </thead>
+            {% for key,all_courses in all_courses.items %}
+            <!--<a href="{% url 'attendance:department_get_units'  all_courses.course_code %}">{{ all_courses.course_name }} [{{ course.course_code }}]</a>-->
+            <!--<br>-->
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{ all_courses.course_name}}</td>
+                <td style="text-transform: uppercase;">{{ all_courses.course_code}}</td>
+                <td>
+                    {% if all_courses.count%}
+                    <a href="{% url 'attendance:department_get_units'  all_courses.course_code %}">
+                         {{all_courses.count}}
+                     </a>
+                    {% else %}
+                    No units attended
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+{% block jquery%}
+{% endblock%}

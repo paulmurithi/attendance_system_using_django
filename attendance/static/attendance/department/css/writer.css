@@ -1,0 +1,693 @@
+body{
+	background: #f2f2f2;
+    padding: 0;
+    margin: 0;
+}
+nav{
+	background-color: #00cc44;/*#5cb85c*/
+	width: 100%;
+}
+.topbar a{
+	position: relative;
+	color: #ffffff;
+	text-align: center;
+	padding-top:15px;
+	padding-left: 10px;
+	display: inline-block;
+	text-decoration: none;
+}
+.topbar a:hover{
+	text-decoration: none;
+}
+/*ADMI-AREA*/
+#admin-topbar{
+	background: #0b97c4;
+}
+#admin-topbar a{
+	color: #fff;
+	padding-left: 15px;
+}
+#admin-topbar .float-right button{
+	margin-top: -10px;
+}
+.topbar .float-right,#admin-topbar .float-right{
+	float: right;
+	position: relative;
+	padding-right: 15px;
+}
+.topbar #logo {
+	font-size: 20px;
+	font-weight: 300;
+	-webkit-transition:width .3s ease-in-out;
+	-o-transition:width .3s ease-in-out;
+	transition:width .3s ease-in-out;
+	/*display:block;
+	float:left;*/
+	height:60px;
+	font-size:20px;
+	text-align:center;
+	/*width:230px;*/
+	padding:0 15px;
+}
+
+/*avatar , username and the online indicator*/
+.avatar{
+	width:100px;
+	position: relative;
+    margin: 20px auto;
+}
+.avatar img{
+	position: relative;
+	margin-left:5px;
+}
+.avatar .text{
+	position:absolute;
+    top: 90px;
+	left:40px;
+	margin:5px auto;
+	font-family: verdana,helvetica;
+	font-size: 1.2em;
+	font-weight: bold;
+	line-height: 15px;
+	clear: left;
+}
+.avatar .text a{
+    padding: 5px;
+	color: #ffffff;
+	text-decoration: none;
+}
+.avatar .text a:hover{
+	 color: #ffffff;
+	 text-decoration: none;
+	background-color:#030a17 ;
+ }
+.avatar #on-indicator{
+	position: absolute;
+    top: 25px;
+	left:10px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background-color: green;
+}
+.online{
+	position: absolute;
+	font-size: 0.65em;
+	left:30px;
+	top: 25px;
+}
+/*main dashboard*/
+
+.dashboard{
+	position: absolute;
+	background-color:#222d32;
+	color:#ffffff;
+    min-height: 100vh;
+	height:auto;
+	margin-top: 0px;
+	border-top: 1px solid #ffffff;
+	width: 230px;
+}
+/*icon that will display dashboard on small devices .... not visible by default*/
+#navicon{
+	display:none ;
+}
+.dashboard ul{
+	padding:0px;
+}
+.dashboard ul li{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+    margin: 0;
+	/*height: 60px;*/
+	/*background-color: #030a17 ;
+	border-bottom: 1px solid #282828;*/
+
+}
+#close{display: none;}
+.dashboard a{
+	color:#ffffff;
+	text-decoration: none;
+	display: block;
+	font-family: Verdana, Helvetica, Geneva, Arial, sans-serif;
+	padding: 20px;
+
+}
+.dashboard a:hover{
+	text-decoration: none;
+}
+.dashboard ul li:hover{
+	background-color: #01000a;
+}
+.dashboard-icons{
+    color: #00E466;
+}
+.fa-chevron-right{
+	display: none;
+}
+.dash-content{
+/*	position: relative;*/
+	/*margin-right: 20px;*/
+	margin-left: 230px;
+
+
+}
+/*css styles for dashboard navigation bar*/
+.breadcrumb{
+	width: 100%;
+    padding: 20px 8px;
+}
+.breadcrumb .btn{
+    margin-left: 0px;
+	color:#ddd;
+}
+.breadcrumb #search{
+	margin-right: 0px;
+	padding-right: 0px;
+}
+.breadcrumb #float-right{
+	float: right;
+	margin-left: 30px;
+	margin-top: -5px;
+	cursor: pointer;
+}
+/*.dash-content a{
+	padding: 25px 40px;
+	background-color: red;
+	text-align: center;
+	border-radius: 3px;
+	display: inline;
+	color: #ffffff;
+	margin-bottom: 25px;
+
+}*/
+
+/*css style for homepage/dashboard*/
+.title{
+	margin-bottom: 15px;
+}
+.title #title-name{
+	font-size: 1.6em;
+	margin-left: auto;
+}
+.title .small{
+	font-size: 0.9em;
+	margin-left: 10px;
+	color: #8c8c8c;
+}
+.title #float-right{
+	float: right;
+	font-family: Verdana, Helvetica, Geneva, Arial, sans-serif;
+}
+.st-detail-title{
+	background-color:#f5f5f5;
+	margin-top: 20px;
+	height: 50px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.st-detail-title #float-right{
+	float: right;
+	padding-right: 15px;
+	cursor: pointer;
+}
+.card{
+	margin-left: 4px;
+	margin-bottom: 8px;
+	margin-right:4px;
+	background-color: #00bb00;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	color: #ffffff;
+	width: 100%;
+
+}
+.card-tasks{
+	background-color: #0099cc;
+}
+.card-classes{
+	background-color: #99ff66;
+}
+.card-exams{
+	background-color: #ff3333;
+}
+.card-staff{
+	background: #4dffff;
+}
+.card .mr-5{
+	margin-bottom: 20px;
+}
+.card a{
+	margin: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	display: block;
+	background-color:#4d4d4d;
+	opacity: 0.3;
+	color: #ffffff;
+}
+.card a:hover{
+	opacity:0.8;
+}
+.card-body-icon{
+	opacity: 0.4;
+}
+.card .float-right{
+	float: right;
+}
+.mr-5{
+	font-weight: bold;
+	font-size: 1.6em;
+	padding-left: 15px;
+}
+/*css for content to be shown when appropriate dashboard link is clicked*/
+/*.hidden-content{*/
+	/*display: none;*/
+/*}*/
+/*css for students full details*/
+.full-details{
+	/*display: none;*/
+}
+.full-details label{
+	width: 150px;
+}
+.full-details input{
+	margin-bottom: 20px;
+	width: 175px;
+}
+.full-details select{
+	width: 175px;
+	height: 24px;
+	margin-bottom: 20px;
+}
+.full-details .fa-pencil{
+	cursor: pointer;
+	margin-right: 20px;
+}
+/*.nav-tabs{*/
+	/*background-color:#222d32;*/
+/*}*/
+/*customises the exams page and the tables in general*/
+table{
+
+	width:100%;
+	margin: 8px;
+	background: #fff;
+}
+tr:hover{
+	background-color: #E0E0E0;
+}
+tr:nth-child(even) {
+
+}
+th,td{
+	color:#333;
+	text-align: left;
+	padding:10px 30px;
+	border-bottom: 1px solid #ddd;
+}
+th {
+	/*background-color: #AAAAAA;*/
+	border-bottom: 2px solid #ddd;
+	border-top: 2px solid #ddd;
+}
+tr{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+table {
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	border: 1px solid black;
+}
+.dash-nav{
+	width: 100%;
+	display: block;
+}
+.dash-nav a{
+	display: inline;
+}
+/*available jobs  page css*/
+.jobs{
+	text-align: center;
+}
+.job-id{
+	position: relative;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 40px;
+	pading-top:3px;
+}
+.job-id h3{
+	font-weight: bold;
+	font-size: 1.8rem;
+	color: #3366ff;
+}
+.job-id .description{
+	letter-spacing: 0.7px;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 1.2em;
+}
+.job-footer .btn{
+	float: right;
+}
+.job-footer button a{
+	color: #ffffff;
+}
+.job-footer
+{
+	position: relative;
+}
+.job-id .price{
+	margin-left: 0px;
+	margin-bottom: -10px;
+	margin-top: 20px;
+	position: absolute;
+	bottom: 3px;
+	left: 5px;
+
+}
+/*style for exams page*/
+#class-marks input[type='number'],
+#class-marks input[type='text'] {
+	width: 60px;
+	border: none;
+}
+.marks-small{
+	font-size: 0.8em;
+	font-style: italic;
+}
+/*subject.php css*/
+.edit-subjects
+{
+	display: none;
+	position: relative;
+	margin: auto;
+	margin-top: 40px;
+}
+.edit-subjects input[type=submit]
+{
+	width: 150px;
+	height: 50px;
+	background-color:#AAAAAA;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-transition: 3s ;
+	-moz-transition: 3s ;
+	-ms-transition: 3s ;
+	-o-transition: 3s ;
+	transition: 3s ;
+}
+.edit-subjects input:focus{
+	color:dodgerblue;
+	-webkit-box-shadow: 0 0 8px 0 dodgerblue;
+	-moz-box-shadow: 0 0 8px 0 dodgerblue;
+	box-shadow: 0 0 8px 0 dodgerblue;
+}
+.edit-subjects i
+{
+	position: absolute;
+	left: 0px;
+	top: 8px;
+	padding: 8px 9px;
+
+}
+.subject-buttons button{
+	margin-bottom: 12px;
+	width: 180px;
+}
+.wrapper {
+	border:1px solid #b3b3b3;
+	display:inline-block;
+	float: right;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+
+}
+.wrapper input,
+button {
+	background-color:transparent;
+	border:0;
+	padding: 8px 15px;
+}
+.wrapper button{
+	background: #e6e6e6;
+	border-left: 1px solid #333;
+}
+/*table-marks.php css*/
+#add-record{
+	display: none;
+}
+/*subjects.PHP*/
+#add-stream,#new-subjects,#add-subjects,#delete-subjects-table,#note,#add-calendar-dates{
+	display:none;
+	margin-bottom: 15px;
+}
+table input{
+	width: 80px;
+	border: none;
+	border-bottom: 1px solid #000000;
+}
+/*submit buttons for subjects.php tables*/
+.action-buttons {
+	margin-left: 30%;
+	width: 180px;
+	position: relative;
+}
+/*login box*/
+.loginBox {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	width: 400px;
+	padding: 20px 40px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin:50px auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 8px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.user {
+	width: 80px;
+	height: 80px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	/*border:1px solid #fff;*/
+	overflow: hidden;
+	position: absolute;
+	top: calc(-50px/2);
+	left: calc(80%/2);
+
+}
+.loginBox h4{
+	margin: 0px;
+	margin-top:40px;
+	padding-bottom: 20px;
+	color: #333;
+	text-align: center;
+	font-weight: bold;
+
+}
+label{
+	font-weight: bold;
+	color: #333;
+}
+.loginBox input{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.loginBox input[type='text']:focus,
+.loginBox input[type='password']:focus {
+	border-bottom: 1px solid dodgerblue;
+	-webkit-box-shadow: 0 3px 5px -3px dodgerblue;
+	-moz-box-shadow: 0 3px 5px -3px dodgerblue;
+	box-shadow: 0 3px 5px -3px dodgerblue;
+}
+.loginBox input[type='text'],
+.loginBox input[type='password']{
+	border: none;
+	border-bottom: 1px solid #7d7d7d;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: grey;
+}
+/*.loginBox input[type='email'],
+.loginBox input[type='password']:
+{
+
+}*/
+::placeholder
+{
+	color: grey;
+}
+.loginBox input[type='submit']
+{
+	border:none;
+	outline: none;
+	color: #fff;
+	font-size: 16px;
+	background-color: #c4c4c4/*#00cc44#0B78D1*/;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	height: 40px;
+}
+.loginBox input[type='submit']:hover
+{
+	background-color: #00B0E8;
+}
+.loginBox input[type='checkbox']
+{
+	width: 20px;
+}
+/*new-member.php*/
+.important{
+	color: #ff1d1b;
+}
+.err{
+	display: none;
+	color: #ff1d1b;
+	font-style: italic;
+}
+
+/*customise display for screens below 768px*/
+@media screen and (max-width: 768px){
+	.dashboard{
+		display: none;
+		width: 230px;
+		z-index: 1;
+	}
+	.dash-content{
+		margin-left: 0px;
+	}
+	/*close button for closing dashboard in small devices*/
+	#close{
+		position: absolute;
+		font-size: 3.0em;
+		top: -10px;
+		right:3px;
+		margin-right: 0px;
+		cursor: pointer;
+		display: none;
+	}
+	.float-right{
+		display: none;
+	}
+	#navicon{
+		display: inline;
+	}
+	.log-out{
+		display: inline;
+		float: right;
+	}
+	.dash-content{
+		width: 100%;
+		padding-left: 0%;
+        z-index: 3;
+	}
+	thead{
+		display: none;
+	}
+	tbody{
+		display: block;
+	}
+	tbody > tr{
+		display: block;
+		-webkit-transition: all 0.3s ease-in-out;
+		-moz-transition: all 0.3s ease-in-out;
+		-ms-transition: all 0.3s ease-in-out;
+		-o-transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
+		border: 1px solid #ddd;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		margin-bottom: 1.6rem;
+	}
+	thead >tr>th,
+	tbody>tr>th,
+	tbody>tr>td,
+	thead>tr>td{
+		text-align: left;
+
+	}
+	tbody > tr >td{
+		vertical-align: middle;
+		display: block;
+		text-align: right;
+		border: 1px solid #ddd;
+	}
+	tbody > tr >td[data-title]:before{
+		content: attr(data-title);
+		float: left;
+		font-size: 1.2em;
+		color: #333;
+        padding-right:8px;
+
+	}
+	tbody>tr:nth-child(even){
+		background-color: #fff;
+
+	}
+	tbody>tr >td:nth-child(even){
+		background-color: #f5f5f5;
+	}
+	tbody>tr:hover,tbody>tr>td:hover{
+		background-color:transparent;
+	}
+}
+.accordion,
+.accordion1 {
+    cursor: pointer;
+    color:#ffffff;
+	text-decoration: none;
+	display: block;
+	font-family: Verdana, Helvetica, Geneva, Arial, sans-serif;
+	padding: 20px;
+
+    }
+.accordion-content,.accordion-content1{
+	display: none;
+    opacity: 0.7;
+    background-color: black;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover,.accordion1:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+/*.accordion:after,.accordion1:after {*/
+  /*content: '\02795'; !* Unicode character for "plus" sign (+) *!*/
+  /*font-size: 13px;*/
+  /*color: #777;*/
+  /*float: right;*/
+  /*margin-left: 5px;*/
+/*}*/
+
+.accordion .active:after,.accordion1 .active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+ /*addlecturer.html*/
+label[for='id_staff_no'],label[for='id_full_name']{
+    min-width: 80px;
+}
